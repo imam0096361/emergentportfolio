@@ -1,10 +1,20 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "experimentalServices": {
-    "frontend": {
-      "entrypoint": "frontend",
-      "routePrefix": "/",
-      "framework": "create-react-app"
+  "buildCommand": "cd frontend && yarn install --frozen-lockfile && DISABLE_ESLINT_PLUGIN=true CI=false yarn build",
+  "outputDirectory": "frontend/build",
+  "installCommand": "echo 'Root install skipped'",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/((?!static/|.*\\..*).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     }
-  }
+  ]
 }

@@ -1,0 +1,21 @@
+# Ignore backend (not deployed on Vercel)
+backend
+tests
+*.md
+!README.md
+
+# Ignore node stuff (Vercel installs fresh)
+node_modules
+frontend/node_modules
+
+# Ignore local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+
+# Misc
+.DS_Store
+*.log
+.vscode
+.idea
