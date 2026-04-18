@@ -9,7 +9,7 @@ This repo is configured to deploy **frontend-only** on Vercel. The `vercel.json`
 ### One-time setup
 
 1. Push this repo to GitHub.
-2. On [vercel.com](https://vercel.com), click **Import Project** → select this GitHub repo.
+2. On [vercel.com](https://vercel.com), click **Import Project** → select this GitHub repo. 
 3. Vercel will detect the `vercel.json`. Click **Deploy**.
 4. (Optional) Add your custom domain `imamchowdhury.com` in **Project → Settings → Domains**.
 
