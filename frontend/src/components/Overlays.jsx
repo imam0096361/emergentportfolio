@@ -42,35 +42,42 @@ export const CustomCursor = () => {
 export const BootOverlay = () => {
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(false);
-  const lines = [
-    "> astra-core :: booting runtime",
-    "> handshake :: imamchowdhury.com [OK]",
-    "> identity :: IMAM_CH verified",
-    "> systems :: 08 online",
-    "> ready"
-  ];
+  const lines = React.useMemo(
+    () => [
+      "> astra-core :: booting runtime",
+      "> handshake :: imamchowdhury.com [OK]",
+      "> identity :: IMAM_CH verified",
+      "> systems :: 08 online",
+      "> ready"
+    ],
+    []
+  );
 
   useEffect(() => {
-    if (step < lines.length) {
-      const t = setTimeout(() => setStep(step + 1), 280);
-      return () => clearTimeout(t);
-    }
-    const t = setTimeout(() => setDone(true), 400);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step]);
+    const total = lines.length;
+    let s = 0;
+    const interval = setInterval(() => {
+      s += 1;
+      setStep(s);
+      if (s >= total) {
+        clearInterval(interval);
+        setTimeout(() => setDone(true), 420);
+      }
+    }, 280);
+    return () => clearInterval(interval);
+  }, [lines]);
 
   if (done) return null;
 
   return (
-    <div className="fixed inset-0 z-[200] bg-[#050506] flex items-center justify-center">
+    <div className="fixed inset-0 z-[200] bg-[#050506] flex items-center justify-center" style={{ animation: done ? "none" : "none" }}>
       <div className="max-w-sm w-full px-8 font-mono text-[11px] text-primary/80 tracking-widest">
         <div className="mb-6 flex items-center gap-2 text-primary">
           <span className="w-2 h-2 bg-primary astra-pulse" />
           <span>ASTRA_CORE // v1.0</span>
         </div>
         {lines.slice(0, step).map((l, i) => (
-          <div key={i} className="opacity-0 animate-fade-in-up" style={{ animation: "fade-in-up 0.35s ease-out forwards" }}>
+          <div key={i} style={{ animation: "fade-in-up 0.35s ease-out both" }}>
             {l}
           </div>
         ))}

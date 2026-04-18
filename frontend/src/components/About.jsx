@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Shield, Cpu, Workflow } from "lucide-react";
 import { aboutStory, focusDomains, principles, identity } from "../data/mock";
+import { SectionHeader } from "./Reveals";
 
 const domainIcon = (code) => {
   switch (code) {
@@ -15,17 +16,15 @@ const domainIcon = (code) => {
 const About = () => {
   return (
     <section id="about" className="relative py-28 md:py-40 px-6 md:px-14 lg:px-24 anchor-offset">
-      {/* section header */}
-      <div className="flex items-end justify-between mb-16">
-        <div>
-          <p className="font-mono text-[10px] tracking-[0.4em] uppercase text-primary/80 mb-3 flex items-center gap-3">
-            <span className="w-8 h-px bg-primary" /> 02 // ABOUT
-          </p>
-          <h2 className="font-display font-black text-4xl md:text-6xl tracking-tight text-white">
-            OPERATOR<span className="text-primary">_</span>PROFILE
-          </h2>
+      <div className="flex items-end justify-between">
+        <div className="flex-1">
+          <SectionHeader
+            index={2}
+            label="ABOUT"
+            title="OPERATOR_PROFILE"
+          />
         </div>
-        <div className="hidden md:block font-mono text-[10px] tracking-[0.3em] text-white/40 text-right">
+        <div className="hidden md:block font-mono text-[10px] tracking-[0.3em] text-white/40 text-right mb-16">
           <div>ID :: {identity.handle}</div>
           <div>LOC :: {identity.location}</div>
         </div>

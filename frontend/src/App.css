@@ -192,6 +192,30 @@
 }
 .astra-pulse { animation: astraPulse 2.2s ease-in-out infinite; }
 
+/* Hero letter rise */
+@keyframes heroLetterRise {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) rotateX(-40deg);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+/* Section title char reveal */
+@keyframes sectionCharRise {
+  from { opacity: 0; transform: translateY(40%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Section anchor scroll offset */
 .anchor-offset { scroll-margin-top: 96px; }
 

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Globe, Send, Check } from "lucide-react";
 import { identity } from "../data/mock";
 import { useToast } from "../hooks/use-toast";
+import { ResumeDownload } from "./ResumeDownload";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -69,6 +70,11 @@ const Contact = () => {
               <Globe size={14} strokeWidth={1.5} className="text-primary" />
               {identity.agency.url.replace("https://", "")}
             </a>
+          </div>
+
+          {/* Resume Download */}
+          <div className="mt-10 pt-8 border-t border-primary/10">
+            <ResumeDownload />
           </div>
         </div>
 
