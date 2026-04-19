@@ -1,6 +1,6 @@
 # Imam Chowdhury — Portfolio (ASTRA CORE)
 
-World-class HUD-style portfolio built with React + Tailwind + Framer Motion + Canvas WebGL-style animations.
+World-class HUD-style portfolio built with React + Tailwind + Framer Motion + Canvas WebGL-style animations.  
 
 ## 🚀 Deploy on Vercel
 
