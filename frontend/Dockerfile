@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 # Since yarn is the package manager according to vercel.json, let's use yarn if package.json has it. 
 # But package-lock.json is there. Let's use npm.
-RUN npm install
+RUN npm install --legacy-peer-deps
 COPY . .
 RUN npm run build
 
