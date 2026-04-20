@@ -1,0 +1,43 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: emergent-mongodb
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    container_name: emergent-backend
+    restart: always
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/emergent
+      - DB_NAME=emergent
+      - CORS_ORIGINS=http://localhost,your-domain.com
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    container_name: emergent-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
